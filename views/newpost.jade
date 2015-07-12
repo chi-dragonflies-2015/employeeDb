@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  form#formNewPost(name="newpost", method="post", action="/posts")
+    input#inputPostTitle(type="text", placeholder="post title", name="title")
+    input#inputPostBody(type="textarea", placeholder="write a post!", name="body")
+    input#inputPostAuthor(type="text", placeholder="author", name="author")
+    input#inputPostDate(type="text", placeholder="date", name="date")
+    button#btwSubmit(type="submit") submit
