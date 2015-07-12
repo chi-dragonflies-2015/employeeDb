@@ -1,11 +1,12 @@
 extends layout
 
 block content
+
   h1.
     Stuff I worked on (it was all new to me!)
   ul.unstyled
     li MongoDB: NoSQL database
-    li Express: Sinatra for Node.js
+    li Express: Sinatra/Rails for Node.js
     li Node.js: Server-side JavaScript
     li Jade: HTML template
     li Ink: CSS framework
@@ -18,12 +19,90 @@ block content
   ul.unstyled
     li NoSQL database - no tables, no schema
     li stores a 'document' inside of a 'collection'
-
-  h4 example query - find a post by ID
+    li documents are essentially JSON objects that can have properties added to them at any time.
+  h4 find a post by ID
   pre.
     db.posts.find( { _id: ObjectId("55a28f10b42fef8c931d3eca") })
   pre.
     { "_id" : ObjectId("55a28f10b42fef8c931d3eca"), "title" : "New Post", "body" : "this is an awesome post", "author" : "Michael K" }
+  h4 create new post
+  pre.
+   db.posts.insert({ "title" : "Second Post" , "body" : "I am writing a post", "author" : "Me", "date" : "July 8, 2015"})
+
+  h2#component-heading.
+    Express
+  ul.unstyled
+    li Inspired by Sinatra - lightweight and un-opinionated
+    li considered the default for Node.js
+    li gives you a skeleton structure (routes, views, layout, etc)
+    h4 create new project
+    pre.
+      express project_name
+    h4 install dependencies (think gemfile)
+    pre.
+      npm install
+    h4 start server
+    pre.
+      npm start
+
+
+
+  h2#component-heading.
+    Node.js
+  ul.unstyled
+    li Server-side JavaScript - handles routes, config, etc.
+    li Promotes code-reuse from top to bottom (think about re-creating models in Lil' Twitter)
+    li No translating of JavaScript to Ruby to SQL(via ActiveRecord) and back again.
+    li Promotes event-based programming on the server. Not completely sure what that means.
+    h4 get route for this very page
+    pre.
+      router.get("/presentation", function(req, res){res.render('presentation', {title: 'Stuff I learned' }); });
+    h4 get route for all posts
+    pre.
+      router.get("/posts", function(req, res) {
+    pre.
+        var db = req.db;
+    pre.
+      var collection = db.get('posts');
+    pre.
+      collection.find({}, {}, function(e, docs) {
+    pre.
+      res.render('allposts', {
+            "posts": docs });  });  });
+    h2#component-heading.
+      Jade
+    ul.unstyled
+      li Horrible mistake
+      li HTML templating that relies on indentation rather than opening and closing tags
+      li Really should have used EJS instead
+      h4 here is the Jade for the above
+      pre.
+        ul.unstyled
+          li Horrible mistake
+          li HTML templating that relies on indentation rather than opening and closing tags
+          li Really should have used EJS instead
+      li if I wanted a link it would look like this
+      pre.
+        li
+          a(href = "http://ink.sapo.pt/cookbook/") Ink
+      li this would not work
+      pre.
+        li a("http://ink.sapo.pt/cookbook/") Ink
+      li this would also not work
+      pre.
+        li
+        a("http://ink.sapo.pt/cookbook/") Ink
+    h2#component-heading.
+      Ink
+    ul.unstyled
+      li very lightweight
+      li nice UI elements - wished I could have done more with them
+      li running this stylesheet over the web via CDN
+      li
+        a(href = "http://ink.sapo.pt/cookbook/") Ink
+
+
+
 
 
 
