@@ -2,8 +2,10 @@ extends layout
 
 block content
   h1.
-      posts
+      Posts
   ul
       each post, i in posts
-        li post.title
+        li= post.title
+        li= post.body
+        li= post.author
 
