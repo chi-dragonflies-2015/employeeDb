@@ -8,6 +8,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// GET presentation page
+router.get("/presentation", function(req, res){
+  res.render('presentation', {
+    title: 'Stuff I learned'
+  });
+});
+
 
 // GET ALL posts
 router.get("/posts", function(req, res) {
