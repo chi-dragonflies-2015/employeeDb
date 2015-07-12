@@ -53,4 +53,21 @@ router.post('/posts', function(req, res) {
     });
 });
 
+// DELETE post
+router.delete('/posts/:id', function(req, res) {
+    var db = req.db;
+    var collection = db.get('posts');
+    var postToDelete = req.params.id;
+    collection.remove({
+        '_id': postToDelete
+    }, function(err) {
+        res.send((err === null) ? {
+            msg: ''
+        } : {
+            msg: 'error: ' + err
+        });
+    });
+});
+
+
 module.exports = router;

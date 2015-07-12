@@ -9,3 +9,5 @@ block content
     h3= post.author
     p= post.body
     p= post.date
+    form(method='POST', action='/posts/#{post._id}?_method=DELETE')
+      button(type='submit') Delete
