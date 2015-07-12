@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1.
+    Stuff I worked on (it was all new to me!)
+  ul.unstyled
+    li MongoDB: NoSQL database
+    li Express: Sinatra for Node.js
+    li Node.js: Server-side JavaScript
+    li Jade: HTML template
+    li Ink: CSS framework
+
+  .presentation-detail
+    p a few points about each component
+
+  h2.
+    MongoDB
+  ul.unstyled
+    li NoSQL database - no tables, no schema
+    li stores a 'document' inside of a 'collection'
+
+  h4 example query - find a post by ID
+  pre.
+    db.posts.find( { _id: ObjectId("55a28f10b42fef8c931d3eca") })
+  pre.
+    { "_id" : ObjectId("55a28f10b42fef8c931d3eca"), "title" : "New Post", "body" : "this is an awesome post", "author" : "Michael K" }
+
+
+
+
